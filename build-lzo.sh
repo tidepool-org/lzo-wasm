@@ -27,7 +27,7 @@ CONFIG_ARGS=(
   --objcc=emcc
   --dep-cc=emcc
 )
-emconfigure ./configure "${CONFIG_ARGS[@]}"
+emconfigure ./FFmpeg/configure "${CONFIG_ARGS[@]}"
 
 # build dependencies
 emmake make -j4
