@@ -33,18 +33,23 @@ emconfigure ./FFmpeg/configure "${CONFIG_ARGS[@]}"
 emmake make -j4
 
 # build lzo-wasm
-mkdir -p wasm/dist
 ARGS=(
   -Llibavutil
   -Qunused-arguments
-  -o wasm/dist/lzo-wasm.js wasm/module.c
+  -o wasm/lzo-wasm.js wasm/module.c
   -lavutil
   -O3                                           # Optimize code with performance first
   -s USE_SDL=2                                  # use SDL2
   -s USE_PTHREADS=1                             # enable pthreads support
   -s PROXY_TO_PTHREAD=1                         # detach main() from browser/UI main thread
   -s INVOKE_RUN=0                               # not to run the main() in the beginning
-  -s EXTRA_EXPORTED_RUNTIME_METHODS="[cwrap, setValue, getValue]"   # export preamble funcs
+  -s EXPORTED_RUNTIME_METHODS="[cwrap, setValue, getValue]"   # export preamble funcs
+  -s EXPORTED_FUNCTIONS="[_malloc, _free]"
   -s INITIAL_MEMORY=33554432                    # 33554432 bytes = 32 MB
+  -s ENVIRONMENT=web,worker                     # don't output Node.js code, it confuses webpack
+  -s MODULARIZE=1
+  -s EXPORT_ES6=1
+  -s USE_ES6_IMPORT_META=0
+  -s EXPORT_NAME='createModule'                 # createModule().then(function(Module) { })
 )
 emcc "${ARGS[@]}"
