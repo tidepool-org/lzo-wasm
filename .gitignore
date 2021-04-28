@@ -12,6 +12,7 @@ libavutil/
 /.version
 /libswresample/
 /libswscale/
+tests/
 src
 wasm/node_modules/
 wasm/package-lock.json
