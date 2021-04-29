@@ -16,6 +16,5 @@ tests/
 src
 wasm/node_modules/
 wasm/package-lock.json
-wasm/package.json
 wasm/yarn-error.log
 lzo-*

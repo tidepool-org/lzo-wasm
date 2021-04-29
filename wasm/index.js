@@ -1,11 +1,18 @@
 import createModule from './lzo-wasm.js';
 import lzoWasm from './lzo-wasm.wasm';
 
-module.exports.decompress = async (input, length) => {
+let Module = null;
+let lzo_decompress = null;
 
-  const Module = await createModule();
+createModule().then((created) => {
+  Module = created;
+  lzo_decompress = Module.cwrap('decompress', 'number', ['number', 'number']);
+});
 
-  const lzo_decompress = Module.cwrap('decompress', 'number', ['number', 'number']);
+module.exports.decompress = (input, length) => {
+  if(Module == null || lzo_decompress || null) {
+    throw new Error('LZO module not ready yet');
+  }
 
   const inputLength = input.length * input.BYTES_PER_ELEMENT;
   const inputPtr = Module._malloc(inputLength);
