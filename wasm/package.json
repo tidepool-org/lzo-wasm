@@ -1,6 +1,6 @@
 {
   "name": "lzo-wasm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "LZO decompression in the browser using FFmpeg",
   "main": "index.js",
   "scripts": {
