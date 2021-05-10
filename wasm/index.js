@@ -26,7 +26,7 @@ createModule().then((created) => {
   lzo_decompress = Module.cwrap('decompress', 'number', ['number', 'number']);
 });
 
-module.exports.decompress = (input, length) => {
+export function decompress(input, length) {
   if(Module == null || lzo_decompress == null) {
     throw new Error('LZO module not ready yet');
   }

@@ -13,9 +13,9 @@ This software uses code of [FFmpeg](http://ffmpeg.org) licensed under the [LGPLv
 ## Usage
 
 ```js
-import lzo from 'lzo-wasm';
+import LZO from 'lzo-wasm';
 
-const decompressed = await lzo.decompress(input, length);
+const decompressed = await LZO.decompress(input, length);
 ```
 
 ## Building from source
