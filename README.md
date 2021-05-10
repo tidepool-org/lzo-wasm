@@ -4,7 +4,7 @@ Decompress using LZO in the browser using Ffmpeg
 
 ## Introduction
 
-`lzo-wasm` is a WebAssembly version of the the LZO implementation of [FFMpeg's libavutil](https://github.com/FFmpeg/FFmpeg/tree/master/libavutil) library.
+`lzo-wasm` is a WebAssembly version of the the LZO implementation in [FFMpeg's libavutil](https://github.com/FFmpeg/FFmpeg/tree/master/libavutil) library.
 
 `lzo-wasm` works in the browser. For Node.js, use [lzo-decompress](https://github.com/tidepool-org/lzo-decompress) instead.
 
