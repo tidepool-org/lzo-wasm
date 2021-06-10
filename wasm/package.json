@@ -4,7 +4,7 @@
   "description": "LZO decompression in the browser using FFmpeg",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "python3 test-server.py"
   },
   "repository": {
     "type": "git",
