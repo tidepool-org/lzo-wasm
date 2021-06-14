@@ -25,7 +25,7 @@ class MyHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_my_headers()
 
-        server.SimpleHTTPRequestHandler.end_headers(self)
+        http.server.SimpleHTTPRequestHandler.end_headers(self)
 
     def send_my_headers(self):
         self.send_header("Cross-Origin-Embedder-Policy", "require-corp")
@@ -50,7 +50,7 @@ server = StoppableHTTPServer(("127.0.0.1", 8080),
 thread = threading.Thread(None, server.run)
 thread.start()
 
-url = 'http://localhost:8000/tests.html'
+url = 'http://localhost:8080/tests.html'
 webbrowser.open_new(url)
 
 while True:
